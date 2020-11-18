@@ -1,5 +1,35 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Books
+  div(style="float:right")
+    form(action="/books/search", method="POST")
+      input(type="text", name="search", placeholder="Search for a book...")
+      input(type="submit", value = "Search")
+    p
+      a(class="button", href="/books/new") Create New Book
+    if books.length
+      table(width="100%")
+        thead
+          tr
+            th Title
+            th Author
+            th Genre
+            th Year
+        tbody
+          each book in books
+            tr
+              td
+                a(href=`/books/${book.id}`)= book.title
+              td= book.author
+              td= book.genre
+              td= book.year
+    br
+    if pages
+      div(style="float:right")
+        - var n = 1
+        while n<= pages
+          a(class="button pagination" href="/books/page/" + n)= n++
+    else
+      div(class="error") We could not find any books  
+
