@@ -56,8 +56,8 @@ ul {
 }
 
 h2 {
-  border-top: 2px solid #e7e7e7;
   padding-top: 20px;
+  text-align: center;
 }
 
 th {
@@ -133,6 +133,10 @@ input[type="text"] {
   font-family: "Lobster", cursive;
 }
 
+.newtitle {
+  margin-left: 3rem;
+}
+
 .detail-container,
 .new-container {
   text-align: center;
@@ -144,14 +148,11 @@ input[type="text"] {
 }
 
 .update-btn,
+.cancel-btn,
+.delete-btn,
 .create-btn {
-  margin-left: 10rem;
-}
-
-.cancel-btn {
-  margin-right: 15rem;
-}
-
-.delete-btn {
-  margin-right: 13.2rem;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-left: 8rem;
 }
