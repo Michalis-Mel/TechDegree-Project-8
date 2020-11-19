@@ -6,7 +6,7 @@ body {
 }
 
 a {
-  color: #019875;
+  color: #0b6651;
   text-decoration: none;
   font-weight: bold;
   transition: 0.4s;
@@ -101,13 +101,11 @@ input[type="text"] {
 .flex {
   display: flex;
   align-items: center;
-  margin-left: 85rem;
+  justify-content: space-between;
 }
 
-.button1 {
-  position: absolute;
-  left: 3rem;
-  top: 7rem;
+.mybutton {
+  color: #006b52;
 }
 
 .error {
@@ -118,7 +116,7 @@ input[type="text"] {
 
 .pagination {
   margin-left: 0;
-  margin-right: 2px;
+  margin-right: 6px;
   width: 20px;
   height: 20px;
 }
