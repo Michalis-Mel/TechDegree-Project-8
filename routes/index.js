@@ -6,11 +6,11 @@ const { Op } = require("sequelize");
 // Handler function to wrap each route
 
 function asyncHandler(cb){
-  return async(req,res,next) => {
+  return async(req, res, next) => {
     try{
       await cb(req, res, next);
-    }catch(error){
-      res.status(500).send(error);
+    }catch(error) {
+      next(error);
     }
   }
 }
@@ -28,7 +28,7 @@ router.get('/books',asyncHandler(async(req, res, next) => {
   if (books.length > 10) {
     books.length = 10;
   }
-  res.render('/index',{books,title:"All books", pages});
+  res.render('index',{books, title:"All books", pages});
 }));
 
 router.get('/books/page/:page', asyncHandler(async(req, res, next) => {
@@ -43,7 +43,7 @@ router.get('/books/page/:page', asyncHandler(async(req, res, next) => {
 //Get the create new book form
 router.get('/books/new',asyncHandler(async(req, res, next) => {
   const books = await Book.findAll();
-  res.render('/new-book',{title:"New book"});
+  res.render('new-book',{title:"New book"});
 }));
 
 //POST a new book to the database
@@ -122,10 +122,10 @@ router.post('/books/search', asyncHandler(async(req, res, next) => {
 }));
 
 //Delete book 
-router.delete('books/:id/delete', asyncHandler(async (req ,res) => {
+router.post('/books/:id/delete', asyncHandler(async (req ,res, next) => {
   const book = await Book.findByPk(req.params.id);
   if(book) {
-    await book.destroy(req.body);
+    await book.destroy();
     res.redirect("/books");
   } else {
     next();

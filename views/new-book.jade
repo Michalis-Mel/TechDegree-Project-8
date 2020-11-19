@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .new-container
+        h1 New Book
+        if errors
+            each error in errors
+                div.error= error
+        form(method="POST")
+            p
+                label(for="title") Title
+                input(name="title", type="text", id="title")
+            p
+                label(for="author") Author
+                input(name="author", type="text", id="author")
+            p
+                label(for="genre") Genre
+                input(name="genre", type="text", id="genre")
+            p
+                label(for="year") Year
+                input(name="year", type="text", id="year")
+            p.create-btn
+                input(type="submit", value="Create New Book")
+            p.cancel-btn
+                a(class="button", href="/books") Cancel
